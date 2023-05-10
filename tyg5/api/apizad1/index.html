@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <style>
+        .darkMode{
+            background-color: grey;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+
+
+<h1 class = "result" ></h1>
+
+
+<script type="text/javascript">
+    const screen = document.querySelector('.result');
+    let viewCountStorage = localStorage.getItem('viewCount');
+    if (viewCountStorage === null) {
+        viewCountStorage = {
+            viewCount: 0,
+        };
+
+        localStorage.setItem('viewCountStorage', JSON.stringify(viewCountStorage));
+    } else {
+        viewCountStorage = JSON.parse(viewCountStorage);
+    }
+
+    screen.innerHTML = `Byłeś na tej stronie ${viewCountStorage.viewCount} razy.`;
+    // eslint-disable-next-line no-plusplus
+    viewCountStorage.viewCount++;
+    localStorage.setItem('viewCount', JSON.stringify(viewCountStorage));
+
+</script>
+
+
+</body>
+</html>
